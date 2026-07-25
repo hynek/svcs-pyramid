@@ -27,7 +27,7 @@ You can find our backwards-compatibility policy [here](https://github.com/hynek/
 ### Added
 
 - Initial release.
-  *svcs-pyramid* is the extraction of *svcs*'s `svcs.pyramid` module into its own package, so that its release cycle is no longer coupled to *svcs*'s.
+  *svcs-pyramid* is the extraction of *svcs*'s `svcs.pyramid` module into its own package.
 
 
 ### Changed

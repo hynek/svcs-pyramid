@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  <em>A Flexible Service Locator for Pyramid.</em>
+  <em>svcs Integration for Pyramid.</em>
 </p>
 
 <!-- end logo -->
@@ -61,12 +61,12 @@ Read on in [*svcs*'s *Why?*](https://svcs.hynek.me/en/latest/why.html) if you're
 
 ## Project links
 
+- [***svcs* itself**](https://github.com/hynek/svcs)
 - [**PyPI**](https://pypi.org/project/svcs-pyramid/)
 - [**GitHub**](https://github.com/hynek/svcs-pyramid)
-- [**Documentation**](https://svcs-pyramid.hynek.me)
+- [**Documentation**](https://svcs-pyramid.readthedocs.io/)
 - [**Changelog**](https://github.com/hynek/svcs-pyramid/blob/main/CHANGELOG.md)
 - [**Funding**](https://hynek.me/say-thanks/)
-- [***svcs* itself**](https://github.com/hynek/svcs)
 
 <!-- end pypi -->
 
@@ -75,7 +75,7 @@ Read on in [*svcs*'s *Why?*](https://svcs.hynek.me/en/latest/why.html) if you're
 
 *svcs-pyramid* is written by [Hynek Schlawack](https://hynek.me/) and distributed under the terms of the [MIT](https://github.com/hynek/svcs-pyramid/blob/main/LICENSE) license.
 
-It started out as the `svcs.pyramid` module inside of [*svcs*](https://github.com/hynek/svcs) and has been extracted into its own package to decouple its release cycle from *svcs*'s.
+It started out as the `svcs.pyramid` module inside of [*svcs*](https://github.com/hynek/svcs) and has been extracted into its own packages.
 
 The development is kindly supported by my employer [Variomedia AG](https://www.variomedia.de/) and all my fabulous [GitHub Sponsors](https://github.com/sponsors/hynek).
 

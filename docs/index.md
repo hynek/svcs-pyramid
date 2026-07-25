@@ -44,11 +44,11 @@ credits
 :hidden:
 :caption: Meta
 
+svcs <https://svcs.hynek.me/>
 PyPI <https://pypi.org/project/svcs-pyramid/>
 GitHub <https://github.com/hynek/svcs-pyramid/>
 Changelog <https://github.com/hynek/svcs-pyramid/blob/main/CHANGELOG.md>
 Contributing <https://github.com/hynek/svcs-pyramid/blob/main/.github/CONTRIBUTING.md>
 Security Policy <https://github.com/hynek/svcs-pyramid/blob/main/.github/SECURITY.md>
 Funding <https://hynek.me/say-thanks/>
-svcs <https://svcs.hynek.me/>
 ```
