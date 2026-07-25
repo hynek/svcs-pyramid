@@ -1,0 +1,254 @@
+# SPDX-FileCopyrightText: 2023 Hynek Schlawack <hs@ox.cx>
+#
+# SPDX-License-Identifier: MIT
+
+[build-system]
+requires = ["hatchling>=1.27.0", "hatch-vcs", "hatch-fancy-pypi-readme"]
+build-backend = "hatchling.build"
+
+
+[project]
+dynamic = ["version", "readme"]
+name = "svcs-pyramid"
+description = "A Flexible Service Locator for Pyramid"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Hynek Schlawack", email = "hs@ox.cx" }]
+requires-python = ">=3.10"
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Framework :: Pyramid",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Programming Language :: Python :: 3.15",
+  "Typing :: Typed",
+]
+keywords = [
+  "service locator",
+  "dependency injection",
+  "inversion of control",
+  "pyramid",
+]
+dependencies = [
+  "pyramid",
+  "svcs>=26.1.0",
+  "typing_extensions>=4.13.0; python_version < '3.15'", # TypeForm
+]
+
+[dependency-groups]
+docs = [
+  "sphinx>=7.2.2",
+  "sphinx-design",
+  "sphinx-copybutton",
+  "sphinx-notfound-page",
+  "sphinxext-opengraph",
+  "myst-parser",
+  "furo>=2023.8.17",
+  "sybil",
+  "pytest>9",
+  "setuptools<82",
+  "sqlalchemy",
+]
+docs-watch = [{ include-group = "docs" }, "watchfiles"]
+tests = ["httpx2", "pytest", "setuptools<82", "sybil>=6"]
+cov = [{ include-group = "tests" }, "coverage[toml]"]
+typing = ["setuptools<82"]
+mypy = [{ include-group = "typing" }, "mypy>=2.2"]  # TypeForms
+dev = [
+  { include-group = "cov" },
+  { include-group = "mypy" },
+  "ruff",
+  # Lock the tox version for even better reproducibility; can't use `uv run tox`
+  # in CI though, because we delete the source code for wheel-first testing.
+  "tox-uv",
+]
+
+
+[tool.uv]
+# Dependency cooldown
+exclude-newer = "1 week"
+
+
+[project.urls]
+Changelog = "https://github.com/hynek/svcs-pyramid/blob/main/CHANGELOG.md"
+Documentation = "https://svcs-pyramid.readthedocs.io/"
+GitHub = "https://github.com/hynek/svcs-pyramid"
+Funding = "https://github.com/sponsors/hynek"
+Mastodon = "https://mastodon.social/@hynek"
+Twitter = "https://twitter.com/hynek"
+
+
+[tool.hatch.version]
+source = "vcs"
+raw-options = { local_scheme = "no-local-version" }
+
+[tool.hatch.metadata.hooks.fancy-pypi-readme]
+content-type = "text/markdown"
+
+[[tool.hatch.metadata.hooks.fancy-pypi-readme.fragments]]
+path = "README.md"
+start-after = "<!-- begin logo -->\n"
+end-before = "\n<!-- end logo -->"
+
+[[tool.hatch.metadata.hooks.fancy-pypi-readme.fragments]]
+path = "README.md"
+start-after = "<!-- begin pypi -->\n"
+end-before = "\n<!-- end pypi -->"
+
+[[tool.hatch.metadata.hooks.fancy-pypi-readme.fragments]]
+text = """
+
+## Release Information
+
+"""
+
+[[tool.hatch.metadata.hooks.fancy-pypi-readme.fragments]]
+path = "CHANGELOG.md"
+start-after = "<!-- changelog follows -->"
+# The `\Z` alternative is needed as long as there's only one release.
+pattern = "\n(###.+?\n)(?:## |\\Z)"
+
+[[tool.hatch.metadata.hooks.fancy-pypi-readme.fragments]]
+text = """
+---
+
+[Full Changelog →](https://github.com/hynek/svcs-pyramid/blob/main/CHANGELOG.md)
+
+
+"""
+
+[[tool.hatch.metadata.hooks.fancy-pypi-readme.fragments]]
+path = "README.md"
+start-at = "## Credits"
+
+[[tool.hatch.metadata.hooks.fancy-pypi-readme.substitutions]]
+pattern = '> \[!(.*)\]'
+replacement = '> **\1**'
+
+[[tool.hatch.metadata.hooks.fancy-pypi-readme.substitutions]]
+pattern = ']\(\./(.*)\)'
+replacement = '](https://github.com/hynek/svcs-pyramid/blob/main/\1)'
+
+[[tool.hatch.metadata.hooks.fancy-pypi-readme.substitutions]]
+pattern = '(docs/_static/.*?")'
+replacement = 'https://raw.githubusercontent.com/hynek/svcs-pyramid/main/\1'
+
+
+[tool.pytest]
+strict = true
+testpaths = ["tests"]
+addopts = ["-ra"]
+filterwarnings = [
+  "once::Warning",
+  # pkg_resources.declare_namespace('zope')
+  "ignore::DeprecationWarning:pkg_resources",
+  # Nothing we can do about this except hoping Pyramid releases a fix.
+  "ignore:pkg_resources is deprecated:UserWarning:pyramid.asset",
+]
+
+
+[tool.coverage.run]
+branch = true
+parallel = true
+source = ["svcs_pyramid", "tests"]
+
+[tool.coverage.paths]
+source = ["src", ".tox/3.*-tests/**/site-packages"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
+exclude_also = [
+  # Typing
+  "if TYPE_CHECKING:",
+  ": +\\.\\.\\.$",
+  # Tests
+  'pytest\.fail\(',
+]
+
+
+[tool.interrogate]
+omit-covered-files = true
+verbose = 2
+fail-under = 100
+whitelist-regex = ["test_.*"]
+
+
+[tool.mypy]
+strict = true
+pretty = true
+
+show_error_codes = true
+enable_error_code = ["ignore-without-code"]
+
+disallow_any_generics = false
+
+[[tool.mypy.overrides]]
+module = "pyramid.*"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "tests.*"
+ignore_errors = true
+
+[[tool.mypy.overrides]]
+module = "conftest"
+ignore_errors = true
+
+[[tool.mypy.overrides]]
+module = "health_check"
+
+disallow_untyped_decorators = false
+
+
+[tool.ruff]
+src = ["src", "tests", "conftest.py", "docs"]
+line-length = 79
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+  "A001",    # shadowing is fine
+  "ANN",     # Mypy is better at this
+  "ARG",     # unused arguments are normal when implementing interfaces
+  "COM",     # Formatter takes care of our commas
+  "CPY",     # they expect a very specific shape of a copyright notice
+  "D",       # We prefer our own docstring style.
+  "E501",    # leave line-length enforcement to formatter
+  "FBT",     # we have one function that takes one bool; c'mon!
+  "FIX",     # Yes, we want XXX as a marker.
+  "INP001",  # sometimes we want Python files outside of packages
+  "ISC001",  # conflicts with formatter
+  "PLR0913", # yes, many arguments, but most have defaults
+  "PYI034",  # We're not adding typing_extensions just for Self.
+  "SLF001",  # private members are accessed by friendly functions
+  "TC",      # TYPE_CHECKING blocks break autodocs
+]
+
+[tool.ruff.lint.per-file-ignores]
+"**/test_*" = [
+  "EM101",   # no need for exception msg hygiene in tests
+  "PLR2004", # numbers are fine in tests
+  "PT011",   # broad is fine
+  "PT012",   # Sometimes we need more than one statement in raises()
+  "S101",    # assert
+  "SIM300",  # Yoda rocks in asserts
+  "TRY002",  # stock exceptions are fine in tests
+]
+
+"typing_tests/*" = [
+  "F841",   # unused variables are fine in type checks
+  "F842",   # unused variables are fine in type checks
+  "RUF059", # unused variables are fine in type checks
+  "SLOT",   # we don't care about slots in type checks
+]
+
+"docs/examples/*" = ["PERF203", "BLE001"]
+
+[tool.ruff.lint.isort]
+lines-between-types = 1
+lines-after-imports = 2
+known-first-party = ["svcs_pyramid", "tests"]
