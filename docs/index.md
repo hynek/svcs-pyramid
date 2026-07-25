@@ -2,7 +2,7 @@
 hide-toc: true
 ---
 
-# *svcs-pyramid*: A Flexible Service Locator for Pyramid
+# *svcs-pyramid*
 
 Release **{sub-ref}`release`**  ([What's new?](https://github.com/hynek/svcs-pyramid/blob/main/CHANGELOG.md))
 
