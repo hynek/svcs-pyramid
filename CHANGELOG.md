@@ -15,9 +15,6 @@ You can find our backwards-compatibility policy [here](https://github.com/hynek/
 
 ## [Unreleased](https://github.com/hynek/svcs-pyramid/compare/26.1.0...HEAD)
 
-
-## [26.1.0](https://github.com/hynek/svcs-pyramid/tree/26.1.0) - UNRELEASED
-
 ### Deprecated
 
 - `svcs_pyramid.get_abstract()` is carried over from `svcs.pyramid` so that the rename is the only change you have to make, but it's deprecated.
