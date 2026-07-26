@@ -13,6 +13,9 @@ You can find our backwards-compatibility policy [here](https://github.com/hynek/
 <!-- changelog follows -->
 
 
+## [Unreleased](https://github.com/hynek/svcs-pyramid/compare/26.1.0...HEAD)
+
+
 ## [26.1.0](https://github.com/hynek/svcs-pyramid/compare/26.1.0...26.1.0) - 2026-07-26
 
 ### Deprecated
