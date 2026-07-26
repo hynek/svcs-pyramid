@@ -58,7 +58,7 @@ To a type checker, `db` has the type `Database`, `api` has the type `WebAPIClien
 `db`, `api`, and `cache` will be automatically cleaned up when the request ends – it's context managers all the way down.
 <!-- end addendum -->
 
-Read on in [*svcs*'s *Why?*](https://svcs.hynek.me/en/latest/why.html) if you're intrigued.
+Read on in [*svcs*'s *Why?*](https://svcs.hynek.me/en/stable/why.html) if you're intrigued.
 
 
 ## Project links
@@ -77,7 +77,7 @@ Read on in [*svcs*'s *Why?*](https://svcs.hynek.me/en/latest/why.html) if you're
 
 *svcs-pyramid* is written by [Hynek Schlawack](https://hynek.me/) and distributed under the terms of the [MIT](https://github.com/hynek/svcs-pyramid/blob/main/LICENSE) license.
 
-It started out as the `svcs.pyramid` module inside of [*svcs*](https://github.com/hynek/svcs) and has been extracted into its own packages.
+It started out as the `svcs.pyramid` module inside of [*svcs*](https://github.com/hynek/svcs) and has been extracted into its own package.
 
 The development is kindly supported by my employer [Variomedia AG](https://www.variomedia.de/) and all my fabulous [GitHub Sponsors](https://github.com/sponsors/hynek).
 
