@@ -10,7 +10,7 @@ build-backend = "hatchling.build"
 [project]
 dynamic = ["version", "readme"]
 name = "svcs-pyramid"
-description = "A Flexible Service Locator for Pyramid"
+description = "svcs Integration for Pyramid"
 license = "MIT"
 license-files = ["LICENSE"]
 authors = [{ name = "Hynek Schlawack", email = "hs@ox.cx" }]
