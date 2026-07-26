@@ -78,3 +78,5 @@ It started out as the `svcs.pyramid` module inside of [*svcs*](https://github.co
 The development is kindly supported by my employer [Variomedia AG](https://www.variomedia.de/) and all my fabulous [GitHub Sponsors](https://github.com/sponsors/hynek).
 
 The [Bestagon](https://www.youtube.com/watch?v=thOifuHs6eY) radar logo is made by [Lynn Root](https://www.roguelynn.com), based on a [Font Awesome](https://fontawesome.com) icon.
+
+The Pyramid logo belongs to the [Pyramid](https://trypyramid.com) project.
