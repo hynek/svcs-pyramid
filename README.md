@@ -3,7 +3,9 @@
   <a href="https://github.com/hynek/svcs-pyramid/">
     <img src="docs/_static/logo_with_name.svg" width="35%" alt="svcs logo showing a hexagon-shaped radar" />
   </a>
-    <img src="docs/_static/pyramid_logo.png" width="25%" alt="Pyramid logo" />
+  <a href="https://trypyramid.com">
+    <img src="docs/_static/pyramid_logo.png" width="35%" alt="Pyramid logo" />
+  </a>
 </p>
 
 <p align="center">
