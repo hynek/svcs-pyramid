@@ -57,13 +57,12 @@ tests = ["httpx2", "pytest", "setuptools<82", "sybil>=6"]
 cov = [{ include-group = "tests" }, "coverage[toml]"]
 typing = ["setuptools<82"]
 mypy = [{ include-group = "typing" }, "mypy>=2.2"]  # TypeForms
+tox = ["tox>4", "tox-uv-bare"]
 dev = [
   { include-group = "cov" },
   { include-group = "mypy" },
+  { include-group = "tox" },
   "ruff",
-  # Lock the tox version for even better reproducibility; can't use `uv run tox`
-  # in CI though, because we delete the source code for wheel-first testing.
-  "tox-uv",
 ]
 
 
